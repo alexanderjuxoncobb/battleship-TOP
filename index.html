@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <style>
+      .game-container {
+        padding: 20px;
+      }
+
+      .boards-container {
+        display: flex;
+        gap: 40px;
+        justify-content: center;
+      }
+
+      .board {
+        display: grid;
+        grid-template-columns: repeat(10, 30px);
+        grid-template-rows: repeat(10, 30px);
+        gap: 2px;
+        background: #ddd;
+        padding: 10px;
+        border: 2px solid black;
+      }
+
+      .board div {
+        background: white;
+        border: 1px solid black;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="game-container">
+      <div class="boards-container">
+        <div class="board-section">
+          <h2>Your Board</h2>
+          <div id="player-board" class="board"></div>
+        </div>
+
+        <div class="board-section">
+          <h2>Enemy Board</h2>
+          <div id="enemy-board" class="board"></div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      const playerBoard = document.getElementById("player-board");
+      const enemyBoard = document.getElementById("enemy-board");
+
+      function createGrid(board) {
+        for (let row = 0; row < 10; row++) {
+          for (let col = 0; col < 10; col++) {
+            const cell = document.createElement("div");
+            cell.dataset.row = row;
+            cell.dataset.col = col;
+            board.appendChild(cell);
+          }
+        }
+      }
+
+      createGrid(playerBoard);
+      createGrid(enemyBoard);
+    </script>
+    <script src="main.js" type="module"></script>
+  </body>
+</html>
